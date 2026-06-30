@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/pwa2.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f3430" />
+    <link rel="apple-touch-icon" href="/192.png" />
+    
+    <title>SIMIGUM</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <style>
+      /* Warna latar disesuaikan dengan tema aplikasi kamu */
+      body {
+        margin: 0;
+        background-color: #e8f8f4;
+      }
+      
+      /* Wrapper agar posisi loading pas di tengah layar */
+      .loader-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+      }
+      
+      /* Pembungkus relatif untuk lingkaran dan logo */
+      .spinner-wrapper {
+        position: relative;
+        width: 90px;
+        height: 90px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      /* Lingkaran hijau yang berputar */
+      .spinner {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 4px solid transparent;
+        border-top: 4px solid #0f3430; /* Hijau tua khas SIMIGUM */
+        border-right: 4px solid #34d399; /* Hijau terang */
+        border-bottom: 4px solid #0f3430;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      /* Logo di bagian tengah yang berdenyut (pulse) halus */
+      .spinner-logo {
+        width: 45px;
+        height: 45px;
+        object-fit: contain;
+        animation: pulse 2s ease-in-out infinite;
+      }
+      
+      /* Keyframes untuk Putaran */
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      /* Keyframes untuk Denyut Logo */
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="loader-container">
+        <div class="spinner-wrapper">
+          <div class="spinner"></div>
+          <img src="/logo.svg" alt="Loading..." class="spinner-logo" />
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
