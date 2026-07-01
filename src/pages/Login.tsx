@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from 'react';
 import { Eye, EyeOff, User, Lock, Warehouse, Sun, Moon, Mail, Shield, ChevronDown, UserCheck, KeyRound, CheckCircle2 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
-import { API_URL } from '../config';
 export default function Login() {
   const {
     login
@@ -66,7 +65,7 @@ export default function Login() {
     setError('');
     setOtpPurpose('LOGIN');
     try {
-      const response = await fetch(`${API_URL}/auth/login`, {
+      const response = await fetch('https://simigum-production.up.railway.app/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -119,7 +118,7 @@ export default function Login() {
     setError('');
     setOtpPurpose('RESET_PASSWORD');
     try {
-      const response = await fetch(`${API_URL}/auth/forgot-password`, {
+      const response = await fetch('https://simigum-production.up.railway.app/api/auth/forgot-password', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -147,7 +146,7 @@ export default function Login() {
     setTimeLeft(120);
     setError('');
     try {
-      const endpoint = otpPurpose === 'LOGIN' ? `${API_URL}/auth/resend-otp` : `${API_URL}/auth/resend-forgot-otp`;
+      const endpoint = otpPurpose === 'LOGIN' ? 'https://simigum-production.up.railway.app/api/auth/resend-otp' : 'https://simigum-production.up.railway.app/api/auth/resend-forgot-otp';
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
@@ -184,7 +183,7 @@ export default function Login() {
     setLoading(true);
     setError('');
     try {
-      const endpoint = otpPurpose === 'LOGIN' ? `${API_URL}/auth/verify-otp` : `${API_URL}/auth/verify-forgot-otp`;
+      const endpoint = otpPurpose === 'LOGIN' ? 'https://simigum-production.up.railway.app/api/auth/verify-otp' : 'https://simigum-production.up.railway.app/api/auth/verify-forgot-otp';
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
@@ -236,7 +235,7 @@ export default function Login() {
     setLoading(true);
     setError('');
     try {
-      const response = await fetch(`${API_URL}/auth/reset-password`, {
+      const response = await fetch('https://simigum-production.up.railway.app/api/auth/reset-password', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

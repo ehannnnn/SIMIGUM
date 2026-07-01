@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Plus, Edit2, Trash2, User, Search, X, Eye, EyeOff, Shield, UserCheck, Users, Loader2, AlertTriangle } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
-import { API_URL } from '../config';
 export default function KelolaUser() {
   const {
     user
@@ -37,7 +36,7 @@ export default function KelolaUser() {
       try {
         const token = getSafeToken();
         if (!token) throw new Error('Token tidak ditemukan. Silakan login ulang.');
-        const response = await fetch(`${API_URL}/user`, {
+        const response = await fetch(`https://simigum-production.up.railway.app/api/user`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
@@ -94,7 +93,7 @@ export default function KelolaUser() {
         ...item,
         verified: updatedStatus
       };
-      const response = await fetch(`${API_URL}/user/${item.id}`, {
+      const response = await fetch(`https://simigum-production.up.railway.app/api/user/${item.id}`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -113,7 +112,7 @@ export default function KelolaUser() {
     if (!deleteId) return;
     try {
       const token = getSafeToken();
-      const response = await fetch(`${API_URL}/user/${deleteId}`, {
+      const response = await fetch(`https://simigum-production.up.railway.app/api/user/${deleteId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -264,7 +263,7 @@ export default function KelolaUser() {
       {showModal && <UserModal item={editItem} userContext={user} onClose={() => setShowModal(false)} onSave={async (formData: any) => {
       try {
         const token = getSafeToken();
-        const url = editItem ? `${API_URL}/user/${editItem.id}` : `${API_URL}/user`;
+        const url = editItem ? `https://simigum-production.up.railway.app/api/user/${editItem.id}` : 'https://simigum-production.up.railway.app/api/user';
         const method = editItem ? 'PUT' : 'POST';
         const payload = {
           namaLengkap: formData.name,

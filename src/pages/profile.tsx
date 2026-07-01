@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Eye, EyeOff, ShieldCheck, Lock, CheckCircle2, User, Camera, XCircle } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
-import { API_URL } from '../config';
 export default function Profil() {
   const { user } = useAuth();
   
@@ -54,7 +53,7 @@ export default function Profil() {
       if (!token && user && (user as any).token) token = (user as any).token;
       if (!token) return;
       
-      const response = await fetch(`${API_URL}/user/profile`, {
+      const response = await fetch('https://simigum-production.up.railway.app/api/user/profile', {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -113,7 +112,7 @@ export default function Profil() {
       let token = localStorage.getItem('token');
       if (!token && user && (user as any).token) token = (user as any).token;
       
-      const response = await fetch(`${API_URL}/user/profile`, {
+      const response = await fetch('https://simigum-production.up.railway.app/api/user/profile', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -152,7 +151,7 @@ export default function Profil() {
       let token = localStorage.getItem('token');
       if (!token && user && (user as any).token) token = (user as any).token;
       
-      const response = await fetch(`${API_URL}/user/password`, {
+      const response = await fetch('https://simigum-production.up.railway.app/api/user/password', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

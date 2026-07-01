@@ -5,8 +5,7 @@ import autoTable from 'jspdf-autotable';
 import { Transaksi, Barang } from '../types';
 import { useAuth } from '../context/AuthContext';
 import BarcodeScanner from '../components/BarcodeScanner';
-import { API_URL } from '../config';
-const BASE_URL = API_URL;
+const BASE_URL = 'https://simigum-production.up.railway.app/api';
 const getHeaders = (isPostOrPut = false) => {
   let token = null;
   try {

@@ -4,8 +4,7 @@ import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { Transaksi } from '../types';
 import { useAuth } from '../context/AuthContext';
-import { API_URL } from '../config';
-const BASE_URL = API_URL;
+const BASE_URL = 'https://simigum-production.up.railway.app/api';
 const getHeaders = () => {
   let token = null;
   try {

@@ -4,8 +4,7 @@ import { DecodeHintType, BarcodeFormat } from '@zxing/library';
 import { Scan, Package, RefreshCcw, CheckCircle, Camera, AlertCircle, ChevronDown, Printer, Plus, X, Hash, CheckCircle2, XCircle, AlertTriangle, Info, QrCode } from 'lucide-react';
 import QRCode from 'qrcode';
 import JsBarcode from 'jsbarcode';
-import { API_URL } from '../config';
-const API_BASE = API_URL;
+const API_BASE = 'https://simigum-production.up.railway.app/api';
 function getSession(): {
   token: string;
   role: string;
