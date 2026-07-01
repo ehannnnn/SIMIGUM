@@ -3,7 +3,8 @@ import { Package, ArrowDown, ArrowUp, AlertTriangle, MoreVertical, Loader2, Cale
 import { useAuth } from '../context/AuthContext';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 
-const BASE_URL = 'http://localhost:8080/api';
+import { API_URL } from '../config';
+const BASE_URL = API_URL;
 
 const getHeaders = () => {
   let token = null;

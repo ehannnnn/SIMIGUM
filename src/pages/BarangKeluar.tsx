@@ -5,7 +5,8 @@ import autoTable from 'jspdf-autotable';
 import { Transaksi, Barang } from '../types';
 import { useAuth } from '../context/AuthContext';
 import BarcodeScanner from '../components/BarcodeScanner';
-const BASE_URL = 'http://localhost:8080/api';
+import { API_URL } from '../config';
+const BASE_URL = API_URL;
 const getHeaders = (isPostOrPut = false) => {
   let token = null;
   try {

@@ -18,6 +18,7 @@ import {
   Truck,
   ChevronDown
 } from 'lucide-react';
+import { API_URL } from '../config';
 import { useAuth } from '../context/AuthContext';
 import BarcodeScanner from '../components/BarcodeScanner';
 
@@ -53,7 +54,7 @@ type BarangFormData = {
   deskripsi: string;
 };
 
-const API_URL = 'http://localhost:8080/api';
+
 
 const getRelasiNama = (value: BarangItem['kategori'] | BarangItem['supplier']): string => {
   if (!value) return '-';

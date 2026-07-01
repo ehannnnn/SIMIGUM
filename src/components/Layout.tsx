@@ -4,6 +4,7 @@ import { LayoutDashboard, Package, ArrowDownCircle, ArrowUpCircle, History, File
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 
+import { API_URL } from '../config';
 interface LayoutProps {
   children: ReactNode;
   currentPage: string;
@@ -126,7 +127,7 @@ export default function Layout({ children, currentPage, onNavigate }: LayoutProp
     try {
       const token = getSafeToken();
       if (!token) return;
-      const res = await fetch(`http://localhost:8080/api/notifikasi/terbaru?t=${Date.now()}`, {
+      const res = await fetch(`${API_URL}/notifikasi/terbaru?t=${Date.now()}`, {
         headers: { Authorization: `Bearer ${token}`, 'Cache-Control': 'no-cache' }
       });
       if (res.ok) {
@@ -140,7 +141,7 @@ export default function Layout({ children, currentPage, onNavigate }: LayoutProp
     try {
       const token = getSafeToken();
       if (!token) return;
-      const res = await fetch('http://localhost:8080/api/user/profile', {
+      const res = await fetch(`${API_URL}/user/profile`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.ok) {
@@ -188,7 +189,7 @@ export default function Layout({ children, currentPage, onNavigate }: LayoutProp
     try {
       const token = getSafeToken();
       if (!token) return;
-      await fetch(`http://localhost:8080/api/notifikasi/${id}`, {
+      await fetch(`${API_URL}/notifikasi/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       });

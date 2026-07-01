@@ -4,7 +4,8 @@ import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { Transaksi } from '../types';
 import { useAuth } from '../context/AuthContext';
-const BASE_URL = 'http://localhost:8080/api';
+import { API_URL } from '../config';
+const BASE_URL = API_URL;
 const getHeaders = () => {
   let token = null;
   try {

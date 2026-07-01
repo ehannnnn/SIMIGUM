@@ -4,7 +4,8 @@ import { DecodeHintType, BarcodeFormat } from '@zxing/library';
 import { Scan, Package, RefreshCcw, CheckCircle, Camera, AlertCircle, ChevronDown, Printer, Plus, X, Hash, CheckCircle2, XCircle, AlertTriangle, Info, QrCode } from 'lucide-react';
 import QRCode from 'qrcode';
 import JsBarcode from 'jsbarcode';
-const API_BASE = 'http://localhost:8080/api';
+import { API_URL } from '../config';
+const API_BASE = API_URL;
 function getSession(): {
   token: string;
   role: string;

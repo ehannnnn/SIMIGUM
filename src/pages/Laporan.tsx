@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Download, TrendingUp, TrendingDown, Calendar, Printer, BarChart2, Search, ChevronDown, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Loader2, AlertTriangle } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
+import { API_URL } from '../config';
 function useCountUp(target: number, duration = 1300, start = false) {
   const [count, setCount] = useState(0);
   useEffect(() => {
@@ -353,7 +354,7 @@ export default function Laporan() {
         if (!token && user && (user as any).token) token = (user as any).token;
         if (!token) throw new Error('Token tidak ditemukan. Silakan login ulang.');
         const params = new URLSearchParams({ search: searchQuery, jenis: jenisTransaksi, dari: dariTanggal, sampai: sampaiTanggal, periode: periodType });
-        const res = await fetch(`http://localhost:8080/api/laporan?${params}`, {
+        const res = await fetch(`${API_URL}/laporan?${params}`, {
           headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }
         });
         if (!res.ok) throw new Error('Gagal mengambil data laporan dari server');
@@ -386,7 +387,7 @@ export default function Laporan() {
       if (!token && user && (user as any).token) token = (user as any).token;
       if (!token) return alert('Sesi berakhir, silakan login ulang.');
       const params = new URLSearchParams({ search: searchQuery, jenis: jenisTransaksi, dari: dariTanggal, sampai: sampaiTanggal, periode: periodType });
-      const res = await fetch(`http://localhost:8080/api/laporan/export/${format}?${params}`, { headers: { Authorization: `Bearer ${token}` } });
+      const res = await fetch(`${API_URL}/laporan/export/${format}?${params}`, { headers: { Authorization: `Bearer ${token}` } });
       if (!res.ok) throw new Error(`Gagal mengunduh laporan ${format.toUpperCase()}`);
       const blob = await res.blob();
       const url = window.URL.createObjectURL(blob);
